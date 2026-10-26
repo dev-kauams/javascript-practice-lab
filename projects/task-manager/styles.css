@@ -1,0 +1,69 @@
+.layout {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  align-items: start;
+}
+@media (max-width: 52rem) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+.toolbar {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  align-items: end;
+  margin-bottom: 1rem;
+}
+.toolbar .field {
+  margin: 0;
+}
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.task {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.8rem;
+  align-items: start;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.task input[type='checkbox'] {
+  margin-top: 0.4rem;
+  inline-size: 1.2rem;
+  block-size: 1.2rem;
+}
+.task-title {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.task.is-done .task-title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.task-notes,
+.task-due {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.task-due.overdue {
+  color: var(--danger);
+  font-weight: 600;
+}
+.empty {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  color: var(--muted);
+}
+#notice {
+  margin-bottom: 1rem;
+}
+#notice button {
+  margin-left: 0.5rem;
+}
