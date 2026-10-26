@@ -1,0 +1,22 @@
+.cards {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+}
+.challenge {
+  margin: 0;
+}
+.challenge .actions {
+  margin: 0.7rem 0;
+}
+.challenge pre.is-error {
+  color: var(--danger);
+}
+section {
+  margin-bottom: 2rem;
+}
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0;
+  list-style: none;
+}
