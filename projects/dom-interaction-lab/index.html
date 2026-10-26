@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DOM Interaction Lab</title>
+    <link rel="stylesheet" href="../_shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ir para as demonstrações</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="back-link" href="../../">Voltar ao laboratório</a>
+        <h1>DOM Interaction Lab</h1>
+        <p>
+          Componentes interativos feitos só com DOM e JavaScript: cada demonstração isola
+          uma técnica. Pressione <kbd>?</kbd> para ver os atalhos.
+        </p>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <nav aria-label="Demonstrações">
+        <ul class="toc">
+          <li><a href="#counter">Contador</a></li>
+          <li><a href="#list">Lista editável</a></li>
+          <li><a href="#tabs">Tabs</a></li>
+          <li><a href="#accordion">Accordion</a></li>
+          <li><a href="#modal">Modal</a></li>
+          <li><a href="#chars">Contador de caracteres</a></li>
+          <li><a href="#shortcuts">Atalhos</a></li>
+        </ul>
+      </nav>
+
+      <section id="counter" class="panel" aria-labelledby="t-counter">
+        <h2 id="t-counter">Contador com limites</h2>
+        <p class="muted">
+          Atualização dinâmica do DOM; os botões desabilitam nos limites 0 e 10.
+        </p>
+        <div id="demo-counter" class="row">
+          <button type="button" aria-label="Diminuir">−</button>
+          <output class="counter-value" data-counter-value aria-live="polite">0</output>
+          <button type="button" aria-label="Aumentar">+</button>
+          <button type="button" class="secondary">Zerar</button>
+        </div>
+      </section>
+
+      <section id="list" class="panel" aria-labelledby="t-list">
+        <h2 id="t-list">Lista com criar, editar e remover</h2>
+        <p class="muted">
+          Um único listener no <code>&lt;ul&gt;</code> (delegação de eventos). Atalho:
+          <kbd>Alt</kbd>+<kbd>N</kbd>.
+        </p>
+        <div id="demo-list">
+          <form class="row" novalidate>
+            <label for="item-text" class="visually-hidden">Novo item</label>
+            <input
+              id="item-text"
+              name="text"
+              placeholder="Novo item"
+              autocomplete="off"
+              aria-describedby="item-error"
+              style="flex: 1 1 14rem"
+            />
+            <button type="submit">Adicionar</button>
+          </form>
+          <span id="item-error" class="field"
+            ><span class="error" data-error></span
+          ></span>
+          <ul></ul>
+          <p class="empty" data-empty hidden>
+            Sua lista está vazia. Adicione o primeiro item acima.
+          </p>
+        </div>
+      </section>
+
+      <section id="tabs" class="panel" aria-labelledby="t-tabs">
+        <h2 id="t-tabs">Tabs</h2>
+        <p class="muted">
+          Use as setas, <kbd>Home</kbd> e <kbd>End</kbd> dentro da lista de abas.
+        </p>
+        <div id="demo-tabs">
+          <div role="tablist" aria-label="Conceitos">
+            <button role="tab" id="tab-1" aria-controls="panel-1" type="button">
+              Eventos
+            </button>
+            <button role="tab" id="tab-2" aria-controls="panel-2" type="button">
+              Seletores
+            </button>
+            <button role="tab" id="tab-3" aria-controls="panel-3" type="button">
+              Criação de nós
+            </button>
+          </div>
+          <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+            <code>addEventListener</code> registra reações; <code>event.target</code> e
+            <code>closest()</code> sustentam a delegação.
+          </div>
+          <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+            <code>querySelector</code> devolve o primeiro elemento;
+            <code>querySelectorAll</code>
+            devolve uma NodeList estática.
+          </div>
+          <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+            <code>createElement</code> + <code>textContent</code> constroem nós sem
+            interpretar HTML.
+          </div>
+        </div>
+      </section>
+
+      <section id="accordion" class="panel" aria-labelledby="t-accordion">
+        <h2 id="t-accordion">Accordion</h2>
+        <div id="demo-accordion">
+          <h3>
+            <button
+              class="acc-button"
+              type="button"
+              id="acc-1"
+              aria-controls="acc-panel-1"
+              aria-expanded="true"
+            >
+              O que é delegação de eventos?
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-1">
+            Um listener no ancestral trata eventos de vários descendentes, inclusive dos
+            criados depois.
+          </div>
+          <h3>
+            <button
+              class="acc-button"
+              type="button"
+              id="acc-2"
+              aria-controls="acc-panel-2"
+              aria-expanded="false"
+            >
+              Por que evitar innerHTML?
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-2">
+            Ele interpreta o texto como HTML. Com dados de usuários, isso abre espaço para
+            XSS.
+          </div>
+          <h3>
+            <button
+              class="acc-button"
+              type="button"
+              id="acc-3"
+              aria-controls="acc-panel-3"
+              aria-expanded="false"
+            >
+              O que aria-expanded comunica?
+            </button>
+          </h3>
+          <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-3">
+            Informa a leitores de tela se o conteúdo controlado pelo botão está aberto ou
+            fechado.
+          </div>
+        </div>
+      </section>
+
+      <section id="modal" class="panel" aria-labelledby="t-modal">
+        <h2 id="t-modal">Modal acessível</h2>
+        <p class="muted">
+          Baseado em <code>&lt;dialog&gt;</code>. Atalho: <kbd>Alt</kbd>+<kbd>M</kbd>.
+          <kbd>Esc</kbd> fecha.
+        </p>
+        <button type="button" id="open-confirm">Abrir confirmação</button>
+        <p id="modal-result" class="muted" role="status"></p>
+        <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+          <form method="dialog">
+            <h2 id="confirm-title">Confirmar ação?</h2>
+            <p>Este modal prende o foco e devolve o foco ao botão que o abriu.</p>
+            <div class="row">
+              <button value="confirm" autofocus>Confirmar</button>
+              <button value="cancel" class="secondary">Cancelar</button>
+            </div>
+          </form>
+        </dialog>
+        <dialog id="help-dialog" aria-labelledby="help-title">
+          <form method="dialog">
+            <h2 id="help-title">Atalhos de teclado</h2>
+            <ul>
+              <li><kbd>Alt</kbd>+<kbd>N</kbd>: foco no campo da lista</li>
+              <li><kbd>Alt</kbd>+<kbd>M</kbd>: abrir o modal de confirmação</li>
+              <li><kbd>?</kbd>: abrir esta ajuda (fora de campos de texto)</li>
+            </ul>
+            <button autofocus>Fechar</button>
+          </form>
+        </dialog>
+      </section>
+
+      <section id="chars" class="panel" aria-labelledby="t-chars">
+        <h2 id="t-chars">Contador de caracteres</h2>
+        <div id="demo-chars" class="field">
+          <label for="bio">Mensagem curta</label>
+          <textarea id="bio" data-max="140" aria-describedby="bio-count"></textarea>
+          <span class="hint" id="bio-count"
+            ><span class="char-count" data-count></span> caracteres</span
+          >
+        </div>
+      </section>
+
+      <section id="shortcuts" class="panel" aria-labelledby="t-shortcuts">
+        <h2 id="t-shortcuts">Último atalho usado</h2>
+        <p id="last-shortcut" class="status">
+          Nenhum ainda. Tente <kbd>Alt</kbd>+<kbd>N</kbd>.
+        </p>
+      </section>
+
+      <p id="live" class="visually-hidden" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
