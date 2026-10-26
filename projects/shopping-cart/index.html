@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../_shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ir para o catálogo</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="back-link" href="../../">Voltar ao laboratório</a>
+        <h1>Shopping Cart</h1>
+        <p>
+          Catálogo e carrinho com valores em centavos, formatação com Intl e persistência
+          local.
+        </p>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <p class="status demo-banner" role="note">
+        Carrinho demonstrativo: os produtos são fictícios e nenhum pagamento real é
+        realizado.
+      </p>
+      <p id="notice" class="status error" role="status" hidden></p>
+
+      <div class="shop">
+        <section aria-labelledby="catalog-title">
+          <h2 id="catalog-title">Catálogo</h2>
+          <div class="toolbar">
+            <div class="field">
+              <label for="search">Buscar</label>
+              <input
+                id="search"
+                type="search"
+                autocomplete="off"
+                placeholder="Nome do produto"
+              />
+            </div>
+            <div class="field">
+              <label for="category">Categoria</label>
+              <select id="category">
+                <option value="">Todas</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sort">Ordenar por</label>
+              <select id="sort">
+                <option value="name">Nome</option>
+                <option value="price-asc">Menor preço</option>
+                <option value="price-desc">Maior preço</option>
+              </select>
+            </div>
+          </div>
+          <p id="catalog-count" class="muted"></p>
+          <ul id="catalog" class="products"></ul>
+          <p id="catalog-empty" class="empty" hidden>
+            Nenhum produto encontrado. Tente outro termo ou categoria.
+          </p>
+        </section>
+
+        <section class="panel" aria-labelledby="cart-title">
+          <h2 id="cart-title">Carrinho <span id="cart-count" class="muted"></span></h2>
+          <p id="cart-empty" class="empty">
+            Seu carrinho está vazio. Adicione produtos do catálogo.
+          </p>
+          <ul id="cart-lines"></ul>
+          <div class="total-row"><span>Total</span><span id="cart-total"></span></div>
+          <div class="row">
+            <button type="button" id="checkout">Finalizar (demonstração)</button>
+            <button type="button" class="secondary" id="clear-cart">Esvaziar</button>
+          </div>
+        </section>
+      </div>
+      <p id="live" class="visually-hidden" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
