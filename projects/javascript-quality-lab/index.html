@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JavaScript Quality Lab</title>
+    <link rel="stylesheet" href="../_shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ir para o conteúdo</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="back-link" href="../../">Voltar ao laboratório</a>
+        <h1>JavaScript Quality Lab</h1>
+        <p>
+          Bugs comuns, refatoração, tratamento de erros e comparação de implementações. A
+          parte mais importante são os testes: rode <code>npm test</code> no terminal.
+        </p>
+      </div>
+    </header>
+    <main id="main" class="wrap">
+      <section aria-labelledby="t-bugs">
+        <h2 id="t-bugs">Caça-bugs: o que dá errado e como corrigir</h2>
+        <div id="bugs"></div>
+      </section>
+
+      <section aria-labelledby="t-refactor">
+        <h2 id="t-refactor">Refatoração de código duplicado</h2>
+        <p class="muted">
+          As duas versões têm o mesmo comportamento, verificado por testes.
+        </p>
+        <div id="refactor"></div>
+      </section>
+
+      <section aria-labelledby="t-bench">
+        <h2 id="t-bench">Comparar implementações</h2>
+        <form id="bench-form" class="panel inline">
+          <div class="field">
+            <label for="kind">Problema</label>
+            <select id="kind" name="kind">
+              <option value="unique">Remover duplicados</option>
+              <option value="sum">Somar números</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="size">Tamanho da lista (10 a 20000)</label>
+            <input
+              id="size"
+              name="size"
+              type="number"
+              min="10"
+              max="20000"
+              value="5000"
+            />
+          </div>
+          <button type="submit">Comparar</button>
+        </form>
+        <div id="bench-out" role="status" aria-live="polite"></div>
+      </section>
+
+      <section aria-labelledby="t-errors">
+        <h2 id="t-errors">Tratamento de erros e validação</h2>
+        <form id="error-form" class="panel">
+          <div class="field">
+            <label for="json">JSON de entrada</label>
+            <textarea id="json" name="json" rows="4">
+{"host":"localhost","porta":3000,"name":"Ana Souza","email":"ana@exemplo.com","age":"29"}</textarea>
+            <span class="hint"
+              >Tente quebrar o JSON, usar porta -1 ou remover o host.</span
+            >
+          </div>
+          <button type="submit">Validar</button>
+        </form>
+        <div id="error-out" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

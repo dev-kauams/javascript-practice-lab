@@ -1,0 +1,30 @@
+.compare {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin: 0.8rem 0;
+}
+.compare pre {
+  margin: 0.3rem 0 0;
+}
+.bad pre {
+  border-color: var(--danger);
+}
+.good pre {
+  border-color: var(--ok);
+}
+section {
+  margin-bottom: 2rem;
+}
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: end;
+}
+.inline .field {
+  margin: 0;
+}
+summary {
+  cursor: pointer;
+}
