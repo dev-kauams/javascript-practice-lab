@@ -121,10 +121,6 @@ A integração contínua (`.github/workflows/ci.yml`) executa lint, formatação
 
 Só crie um projeto novo se o desafio não couber em nenhum dos oito. Veja também [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Publicação no GitHub Pages
-
-O workflow `.github/workflows/pages.yml` monta um site estático com a página inicial e a pasta `projects/` e o publica a cada push na `main`. Para habilitar, em **Settings → Pages**, escolha **Source: GitHub Actions**. Todos os links são relativos, então funcionam em `https://USUARIO.github.io/javascript-practice-lab/`.
-
 ## Estrutura do repositório
 
 ```text
