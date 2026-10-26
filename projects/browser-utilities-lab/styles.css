@@ -1,0 +1,50 @@
+.tools {
+  display: grid;
+  gap: 1.25rem;
+}
+.preview-image {
+  max-width: 100%;
+  max-height: 22rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.8rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+#messages {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+#messages:empty {
+  display: none;
+}
+.inline-fields {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: end;
+}
+@media (max-width: 40rem) {
+  .inline-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.inline-fields .field {
+  margin: 0;
+}
+#availability {
+  margin: 0;
+  padding-left: 1.2rem;
+}
