@@ -1,0 +1,25 @@
+{
+  "name": "javascript-practice-lab",
+  "version": "1.0.0",
+  "description": "Laboratório de prática em JavaScript puro: 8 projetos coesos para treinar o dia a dia de quem desenvolve para a Web.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10"
+  }
+}
