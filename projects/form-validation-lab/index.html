@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form Validation Lab</title>
+    <link rel="stylesheet" href="../_shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ir para os formulários</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="back-link" href="../../">Voltar ao laboratório</a>
+        <h1>Form Validation Lab</h1>
+        <p>
+          Login e cadastro em etapas com validação nativa e em JavaScript. Os envios são
+          simulados: nenhum dado sai do seu navegador.
+        </p>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <div class="row switch" role="group" aria-label="Escolha o formulário">
+        <button type="button" id="show-login" aria-pressed="true">Entrar</button>
+        <button type="button" id="show-signup" class="secondary" aria-pressed="false">
+          Criar conta
+        </button>
+      </div>
+
+      <section id="login-panel" class="panel" aria-labelledby="login-title">
+        <h2 id="login-title">Entrar</h2>
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="login-email">E-mail</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              aria-describedby="login-email-error"
+            />
+            <span class="error" id="login-email-error"></span>
+          </div>
+          <div class="field">
+            <label for="login-password">Senha</label>
+            <div class="row nowrap">
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                aria-describedby="login-password-error"
+              />
+              <button
+                type="button"
+                class="secondary toggle"
+                id="login-toggle"
+                aria-pressed="false"
+                aria-controls="login-password"
+              >
+                Mostrar senha
+              </button>
+            </div>
+            <span class="error" id="login-password-error"></span>
+            <span class="hint"
+              >Na demonstração, a senha correta é <code>Senha@123</code>.</span
+            >
+          </div>
+          <button type="submit">Entrar</button>
+        </form>
+        <p class="status" id="login-status" role="status" hidden></p>
+      </section>
+
+      <section id="signup-panel" class="panel" aria-labelledby="signup-title" hidden>
+        <h2 id="signup-title">Criar conta</h2>
+        <ol class="steps" id="step-indicator" aria-label="Etapas do cadastro"></ol>
+
+        <form id="signup-form" novalidate>
+          <fieldset data-step="0">
+            <legend>Dados pessoais</legend>
+            <div class="field">
+              <label for="name">Nome completo</label>
+              <input
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+                aria-describedby="name-error"
+              />
+              <span class="error" id="name-error"></span>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                aria-describedby="email-hint email-error"
+              />
+              <span class="hint" id="email-hint">
+                Use <code>erro@teste.com</code> para ver uma falha de envio.
+              </span>
+              <span class="error" id="email-error"></span>
+            </div>
+            <div class="field">
+              <label for="phone">Telefone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel-national"
+                placeholder="(11) 91234-5678"
+                required
+                aria-describedby="phone-error"
+              />
+              <span class="error" id="phone-error"></span>
+            </div>
+          </fieldset>
+
+          <fieldset data-step="1" hidden>
+            <legend>Segurança</legend>
+            <div class="field">
+              <label for="password">Senha</label>
+              <div class="row nowrap">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  required
+                  aria-describedby="password-rules password-error"
+                />
+                <button
+                  type="button"
+                  class="secondary toggle"
+                  id="signup-toggle"
+                  aria-pressed="false"
+                  aria-controls="password"
+                >
+                  Mostrar senha
+                </button>
+              </div>
+              <ul id="password-rules" class="rules"></ul>
+              <span class="error" id="password-error"></span>
+            </div>
+            <div class="field">
+              <label for="confirm">Confirmar senha</label>
+              <input
+                id="confirm"
+                name="confirm"
+                type="password"
+                autocomplete="new-password"
+                required
+                aria-describedby="confirm-error"
+              />
+              <span class="error" id="confirm-error"></span>
+            </div>
+            <div class="field">
+              <label class="check">
+                <input
+                  id="terms"
+                  name="terms"
+                  type="checkbox"
+                  required
+                  aria-describedby="terms-error"
+                />
+                Li e aceito os termos (demonstrativos).
+              </label>
+              <span class="error" id="terms-error"></span>
+            </div>
+          </fieldset>
+
+          <fieldset data-step="2" hidden>
+            <legend>Revise antes de confirmar</legend>
+            <dl id="review" class="review"></dl>
+          </fieldset>
+
+          <div class="row">
+            <button type="button" class="secondary" id="back" hidden>Voltar</button>
+            <button type="button" id="next">Continuar</button>
+            <button type="submit" id="submit" hidden>Confirmar cadastro</button>
+          </div>
+        </form>
+        <p class="status" id="signup-status" role="status" hidden></p>
+      </section>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
