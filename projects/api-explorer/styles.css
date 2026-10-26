@@ -1,0 +1,65 @@
+.controls {
+  display: grid;
+  gap: 0.8rem 1rem;
+  grid-template-columns: minmax(14rem, 2fr) minmax(10rem, 1fr) auto auto;
+  align-items: end;
+}
+@media (max-width: 48rem) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
+.controls .field {
+  margin: 0;
+}
+.check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: 400;
+}
+.results {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+}
+.card {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+}
+.card h3 {
+  margin-bottom: 0.2rem;
+  overflow-wrap: anywhere;
+}
+.card p {
+  margin: 0.15rem 0;
+}
+.cover {
+  flex: none;
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+.placeholder {
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+}
+.results[aria-busy='true'] {
+  opacity: 0.55;
+}
+.pager {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#status button {
+  margin-left: 0.5rem;
+}
